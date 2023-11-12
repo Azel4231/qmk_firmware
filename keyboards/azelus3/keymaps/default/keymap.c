@@ -44,18 +44,18 @@ Flash the arduino micro:
 */
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_COLEMAK] = { 
-  {KC_ESC,  XXXXX, XXXXX,   XXXXX,   KC_F5,   XXXXX,      XXXXX,   KC_KP_SLASH,  XXXXX,   XXXXX,  XXXXX,   DE_ODIA},
-  {KC_TAB,  KC_Q,  KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,         KC_U,    DE_Z,   DE_UDIA, DE_ADIA},
-  {KC_LCTL, KC_A,  KC_R,    KC_S,    KC_T,    KC_G,       KC_M,    KC_N,         KC_E,    KC_I,   KC_O,    KC_BSPC},
-  {XXXXX,   DE_Y,  KC_X,    KC_C,    KC_D,    KC_V,       KC_K,    KC_H,         KC_COMM, KC_DOT, DE_MINS, KC_DEL},
-  {XXXXX,   XXXXX, KC_LGUI, KC_LALT, KC_LSFT, MO(_SYM),   KC_ENT,  MO(_NAV),     KC_SPC,  _____,  XXXXX,   XXXXX}
+  {KC_DEL,  XXXXX, XXXXX,   XXXXX,   KC_F5,   XXXXX,      XXXXX,   KC_KP_SLASH,  XXXXX,    XXXXX,  XXXXX,   DE_ODIA},
+  {KC_ESC,  KC_Q,  KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,         KC_U,     DE_Z,   DE_UDIA, DE_ADIA},
+  {KC_LCTL, KC_A,  KC_R,    KC_S,    KC_T,    KC_G,       KC_M,    KC_N,         KC_E,     KC_I,   KC_O,    KC_BSPC},
+  {KC_TAB,  DE_Y,  KC_X,    KC_C,    KC_D,    KC_V,       KC_K,    KC_H,         KC_COMM,  KC_DOT, DE_MINS, DE_SS},
+  {XXXXX,   XXXXX, KC_LGUI, KC_LALT, KC_LSFT, MO(_SYM),   KC_ENT,  MO(_NAV),     KC_SPC,   _____,  XXXXX,   XXXXX}
 },
 [_ALT_LAY] =  { 
-  {KC_ESC,  XXXXX, XXXXX,   XXXXX,   KC_F5,   XXXXX,      XXXXX,   KC_KP_SLASH,  XXXXX,    XXXXX,  XXXXX,   DE_ODIA},
-  {KC_TAB,  KC_Q,  KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,         KC_U,     DE_Z,   DE_UDIA, DE_ADIA},
-  {KC_LSFT, KC_A,  KC_R,    KC_S,    KC_T,    KC_G,       KC_M,    KC_N,         KC_E,     KC_I,   KC_O,    KC_BSPC},
-  {KC_LCTL, DE_Y,  KC_X,    KC_C,    KC_D,    KC_V,       KC_K,    KC_H,         KC_COMM,  KC_DOT, DE_MINS, KC_DEL},
-  {XXXXX,   XXXXX, KC_LGUI, KC_LALT, KC_LSFT, MO(_SYM),   KC_ENT,  MO(_NAV),     KC_SPC,   _____,  XXXXX,   XXXXX}
+  {KC_ESC,  XXXXX, XXXXX,   XXXXX,   KC_F5,   XXXXX,      XXXXX,   KC_KP_SLASH,  XXXXX,   XXXXX,  XXXXX,   DE_ODIA},
+  {KC_TAB,  KC_Q,  KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,         KC_U,    DE_Z,   DE_UDIA, DE_ADIA},
+  {KC_LSFT, KC_A,  KC_R,    KC_S,    KC_T,    KC_G,       KC_M,    KC_N,         KC_E,    KC_I,   KC_O,    KC_BSPC},
+  {KC_LCTL, DE_Y,  KC_X,    KC_C,    KC_D,    KC_V,       KC_K,    KC_H,         KC_COMM, KC_DOT, DE_MINS, DE_SS},
+  {XXXXX,   XXXXX, KC_LGUI, KC_LALT, KC_LSFT, MO(_SYM),   KC_ENT,  MO(_NAV),     KC_SPC,  _____,  XXXXX,   XXXXX}
 },
 [_NAV] = { 
   {DF(_COLEMAK), XXXXX,   XXXXX,   XXXXX,    _____,  XXXXX,      XXXXX,   _____,   XXXXX,   XXXXX,    XXXXX, _____},
@@ -66,13 +66,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 },
 [_SYM] = { 
   {DE_PERC, XXXXX,   XXXXX,   XXXXX,   DE_PIPE, XXXXX,     XXXXX,   _____,   XXXXX,  XXXXX, XXXXX,    DE_ACUT},
-  {DE_AMPR, DE_AT,   DE_DQUO, DE_EURO, DE_LCBR, DE_RCBR,   DE_TILD, KC_7,    KC_8,   KC_9,  KC_DOT,   DE_QUOT},
-  {DE_SECT, DE_EXLM, DE_SS,   DE_HASH, DE_LPRN, DE_RPRN,   DE_ASTR, KC_4,    KC_5,   KC_6,  DE_PLUS,  _____},
-  {DE_DLR,  DE_QUES, DE_LABK, DE_RABK, DE_LBRC, DE_RBRC,   DE_BSLS, KC_1,    KC_2,   KC_3,  DE_EQL,   DE_GRV},
-  {XXXXX,   XXXXX,   DE_CIRC, _____,   _____,   _____,     KC_ENT,  KC_0,    _____,  _____, XXXXX,    XXXXX}
+  {DE_AMPR, DE_AT,   DE_DQUO, DE_DLR,  DE_LCBR, DE_RCBR,   DE_TILD, KC_7,    KC_8,   KC_9,  DE_CIRC,  DE_QUOT},
+  {DE_EURO, DE_EXLM, DE_EQL,  DE_HASH, DE_LPRN, DE_RPRN,   DE_ASTR, KC_4,    KC_5,   KC_6,  DE_PLUS,  _____},
+  {DE_SECT, DE_QUES, DE_LABK, DE_RABK, DE_LBRC, DE_RBRC,   DE_BSLS, KC_1,    KC_2,   KC_3,  KC_DOT,   DE_GRV},
+  {XXXXX,   XXXXX,   _____, _____,   _____,   _____,     KC_ENT,  KC_0,    _____,  _____, XXXXX,    XXXXX}
 }
 };
 
+/*
+Notizen für zukünftige Änderungen:
+  * 
+*/
 
 
 /*
@@ -109,46 +113,51 @@ Keyboard Layout Editor: http://www.keyboard-layout-editor.com/#/
 
 
 
-
-["Esc", {x:3}, "F5", {x:2.5}, "/", {x:3}, "Ö"],
-["Tab", "Q", "W", "F", "P", "B", {x:0.5},"J", "L", "U", "Z", "Ü", "Ä"],
-["Shift", "A", "R", "S",{n:true}, "T", "G", {x:0.5}, "M", {n:true},"N", "E", "I", "O", "←"],
-["Ctrl", "Y", "X", "C", "D", "V", {x:0.5}, "K", "H", ",", ".", "-", "Shift"],
+[{c:"#D0D0D0", y:1}, "Del", {x:3}, "F5", {x:2.5}, "/", {x:3}, "Ö"],
+["Esc", "Q", "W", "F", "P", "B", {x:0.5},"J", "L", "U", "Z", "Ü", "Ä"],
+["Ctrl", "A", "R", "S",{n:true}, "T", "G", {x:0.5}, "M", {n:true},"N", "E", "I", "O", "<i class='mss mss-Unicode-BackSpace-DeleteLeft-Big-2'></i>"],
+["Tab", "Y", "X", "C", "D", "V", {x:0.5}, "K", "H", ",", ".", "-", "Del"],
 [{x:3}, "Meta", {x:4.5}, ""],
-[{x:3}, "Alt", "Blank", {c:"#90B0F0"}, "Sym", {c:"#D0D0D0",x:0.5}, "Enter", {c:"#F0F0A0"}, "Nav", {c:"#D0D0D0"},  "Del"],
-
+[{x:3}, "Alt", "⇧", {c:"#90B0F0"}, "Sym", {c:"#D0D0D0",x:0.5}, "↵", {c:"#F0F0A0"}, "Nav", {c:"#D0D0D0"},  "Blank"]
 ,
-
-[{y:1}, "Esc", {x:3}, "F5", {x:2.5}, "/", {x:3}, "Ö"],
-["Tab", "Q", "W", "F", "P", "B", {x:0.5},"J", "L", "U", "Z", "Ü", "Ä"],
-["Ctrl", "A", "R", "S",{n:true}, "T", "G", {x:0.5}, "M", {n:true},"N", "E", "I", "O", "←"],
-["", "Y", "X", "C", "D", "V", {x:0.5}, "K", "H", ",", ".", "-", ""],
-[{x:3}, "Meta", {x:4.5}, "Toggle Alt Layout"],
-[{x:3}, "Alt", "Shift", {c:"#90B0F0"}, "Sym", {c:"#D0D0D0",x:0.5}, "Enter", {c:"#F0F0A0"}, "Nav", {c:"#D0D0D0"},  "Blank"]
-
-,
-
 [{c:"#F0F0A0", y:1},"Base Layer",           {x:3}, ""        , {x:2.5}, ""                    , {x:3}, ""],
-["Alt Layer", "°", "F7", "F8", "F9", "F10", {x:0.5},"Pg↑", "Home", "↑", "End", "", "Vol+"],
-["", "Old Layer", "F4", "F5",{n:true}, "F6", "F11", {x:0.5}, "Pg↓",{n:true}, "←", "↓", "→", "", "Vol-"],
-["", "Mac Layer", "F1", "F2", "F3", "F12", {x:0.5}, "", "Ins", "", "Del", "", ""],
+["Alt Layer", "°", "F7", "F8", "F9", "F10", {x:0.5},"Pg↑", "Home", "↑", "End", "", "<i class='kb kb-Multimedia-Volume-Up-2'></i>"],
+["", "", "F4", "F5",{n:true}, "F6", "F11", {x:0.5}, "Pg↓",{n:true}, "←", "↓", "→", "", "<i class='kb kb-Multimedia-Volume-Down-1'></i>"],
+["", "r", "F1", "F2", "F3", "F12", {x:0.5}, "", "Ins", "", "Del", "", ""],
 [{x:3}, "", {x:4.5}, ""],
 [{x:3}, "", "", "", {x:0.5}, "", "", ""]
-
 ,
-
 [{c:"#90B0F0", y:1},"%", {x:3}, "|", {x:2.5}, "", {x:3}, "´"],
-["&", "@", "\"", "€", "{", "}", {x:0.5},"~", "7", "8", "9", ".", "'"],
-["§", "!", "ß", "#", {n:true},"(", ")", {x:0.5}, "*", {n:true},"4", "5", "6", "+", "←"],
-["$", "?", "<", ">", "[", "]", {x:0.5}, "\\", "1", "2", "3", "=", "`"],
-[{x:3}, "^", {x:4.5}, ""],
+["&", "@", "\"", "$", "{", "}", {x:0.5},"~", "7", "8", "9", "^", "'"],
+["€", "!", "ß", "#", {n:true},"(", ")", {x:0.5}, "*", {n:true},"4", "5", "6", "+", "<i class='mss mss-Unicode-BackSpace-DeleteLeft-Big-2'></i>"],
+["§", "?", "<", ">", "[", "]", {x:0.5}, "\\", "1", "2", "3", "=", "`"],
+[{x:3}, "", {x:4.5}, ""],
 [{x:3}, "", "", "", {x:0.5}, "", "0", ""]
 
 
 
 
-*/
 
+[{c:"#D0D0D0"},"Select\nshot\n\n\n\n\nscreen",{x:3},"tab",{x:2.5},"ß",{x:3},"Ö"],
+["esc","Q","W","F","P","B",{x:0.5},"J","L","U","Z","Ü","Ä"],
+["⌥","A","R","S",{n:true},"T","G",{x:0.5},"M",{n:true},"N","E","I","O","<i class='mss mss-Unicode-BackSpace-DeleteLeft-Big-2'></i>"],
+["⌃","Y","X","C","D","V",{x:0.5},"K","H","<\n\n\n\n\n\n,",">\n\n\n\n\n\n.","?\n\n\n\n\n\n'","⇧"],
+[{x:3,c:"#ffffff",a:7},"",{x:4.5},""],
+[{x:3,c:"#D0D0D0",a:4},"⌘","Blank",{c:"#90B0F0"},"Sym",{x:0.5,c:"#D0D0D0"},"↵",{c:"#F0F0A0"},"Nav",{c:"#D0D0D0"},"⇧"],
+[{y:1,c:"#F0F0A0"},"Mic on/off",{x:3},"tab",{x:2.5},"Home",{x:3},"<i class='kb kb-Unicode-Lock-Closed-1'></i>"],
+["esc",{a:7},"",{a:4},"F7","F8","F9","F10",{x:0.5},"Pg↑","End","↑","<i class='kb kb-Multimedia-Mute-3'></i>","<i class='kb kb-Multimedia-Volume-Down-1'></i>","<i class='kb kb-Multimedia-Volume-Up-2'></i>"],
+["⌥",{a:7},"",{a:4},"F4","F5",{n:true},"F6","F11",{x:0.5},"Pg↓",{n:true},"←","↓","→",{a:7},"",{a:4},"Del"],
+["⌃",{a:7},"",{a:4},"F1","F2","F3","F12",{x:0.5,a:7},"",{a:4},"Ins",{a:7},"","","",{a:4},"⇧"],
+[{x:3,c:"#ffffff",a:7},"",{x:4.5},""],
+[{x:3,c:"#F0F0A0",a:4},"⌘","Blank",{a:7},"",{x:0.5},"","",""],
+[{y:1,c:"#ffffff",a:4},"`",{x:3,c:"#90B0F0"},"tab",{x:2.5},"^",{x:3,c:"#ffffff"},"´"],
+[{c:"#90B0F0"},"esc","!","@","$","{","}",{x:0.5},"*","7","8","9","%",{c:"#ffffff"},"~"],
+[{c:"#90B0F0"},"⌥","\"","=",";",{n:true},"(",")",{x:0.5},"+",{n:true},"4","5","6","#","<i class='mss mss-Unicode-BackSpace-DeleteLeft-Big-2'></i>"],
+["⌃","&","|",":","[","]",{x:0.5},"-","1","2","3","_",{c:"#ffffff"},"°"],
+[{x:3},"§",{x:4.5,c:"#90B0F0"},"0"],
+[{x:3,a:7},"","","",{x:0.5,a:4},"↵","/","\\"]
+
+*/
 
 /*
 Ergogen: https://ergogen.cache.works/
