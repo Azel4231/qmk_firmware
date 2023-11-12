@@ -36,7 +36,6 @@ Navigate to qmk folder:
 
 Flash the arduino micro:
  - double tap the reset button, give it a second to register with the system, and within 5 seconds execute:
- - avrdude -D -patmega32u4 -cavr109 -P/dev/ttyACM0 -b57600 -Uflash:w:/home/.../github/qmk_firmware/planck_rev5_azelus.hex:i 
  - avrdude -D -patmega32u4 -cavr109 -P/dev/ttyACM0 -b57600 -Uflash:w:/home/.../github/qmk_firmware/azelus3_default.hex:i 
  (-D avoids clearing the memory before trying to read the new firmware)
  (absolute path mandatory!) 
@@ -51,26 +50,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   {XXXXX,   DE_Y,  KC_X,    KC_C,    KC_D,    KC_V,       KC_K,    KC_H,         KC_COMM, KC_DOT, DE_MINS, KC_DEL},
   {XXXXX,   XXXXX, KC_LGUI, KC_LALT, KC_LSFT, MO(_SYM),   KC_ENT,  MO(_NAV),     KC_SPC,  _____,  XXXXX,   XXXXX}
 },
-[_MAC] = { 
-  {_____,   XXXXX,      XXXXX, XXXXX,   _____, XXXXX,      XXXXX,  _____, XXXXX,   XXXXX,  XXXXX,   _____},
-  {_____,   RALT(KC_L), _____, _____,   _____, _____,      _____,  _____, _____,   _____,  _____,   _____},
-  {KC_LCMD, _____,      _____, _____,   _____, _____,      _____,  _____, _____,   _____,  _____,   _____},
-  {KC_LCTL, _____,      _____, _____,   _____, _____,      _____,  _____, _____,   _____,  _____,   _____},
-  {XXXXX,   XXXXX,      _____, KC_LOPT, _____, _____,      _____,  _____, _____,   _____,  XXXXX,   XXXXX}
-},
-[_ALT_LAY] = { 
-  {KC_ESC,  XXXXX, XXXXX,   XXXXX,   KC_F5,   XXXXX,      XXXXX,   KC_KP_SLASH,  XXXXX,   XXXXX,  XXXXX,   DE_ODIA},
-  {KC_TAB,  KC_Q,  KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,         KC_U,    DE_Z,   DE_UDIA, DE_ADIA},
-  {KC_LCTL, KC_A,  KC_R,    KC_S,    KC_T,    KC_G,       KC_M,    KC_N,         KC_E,    KC_I,   KC_O,    KC_BSPC},
-  {XXXXX,   DE_Y,  KC_X,    KC_C,    KC_D,    KC_V,       KC_K,    KC_H,         KC_COMM, KC_DOT, DE_MINS, KC_DEL},
-  {XXXXX,   XXXXX, KC_LGUI, KC_LALT, KC_LSFT, MO(_SYM),   KC_ENT,  MO(_NAV),     KC_SPC,  _____,  XXXXX,   XXXXX}
-},
-[_OLD] = { 
-  {KC_ESC,  XXXXX, XXXXX,   XXXXX,   KC_F5,   XXXXX,      XXXXX,   KC_KP_SLASH,  XXXXX,   XXXXX,  XXXXX,   DE_ODIA},
-  {KC_TAB,  KC_Q,  KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,         KC_U,    DE_Z,   DE_UDIA, DE_ADIA},
-  {KC_LSFT, KC_A,  KC_R,    KC_S,    KC_T,    KC_G,       KC_M,    KC_N,         KC_E,    KC_I,   KC_O,    KC_BSPC},
-  {KC_LCTL, DE_Y,  KC_X,    KC_C,    KC_D,    KC_V,       KC_K,    KC_H,         KC_COMM, KC_DOT, DE_MINS, KC_RSFT},
-  {XXXXX,   XXXXX, KC_LGUI, KC_LALT, KC_SPC,  MO(_SYM),   KC_ENT,  MO(_NAV),     XXXXX,   _____,  XXXXX,   XXXXX}
+[_ALT_LAY] =  { 
+  {KC_ESC,  XXXXX, XXXXX,   XXXXX,   KC_F5,   XXXXX,      XXXXX,   KC_KP_SLASH,  XXXXX,    XXXXX,  XXXXX,   DE_ODIA},
+  {KC_TAB,  KC_Q,  KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,         KC_U,     DE_Z,   DE_UDIA, DE_ADIA},
+  {KC_LCTL, KC_A,  KC_R,    KC_S,    KC_T,    KC_G,       KC_M,    KC_N,         KC_E,     KC_I,   KC_O,    KC_BSPC},
+  {XXXXX,   DE_Y,  KC_X,    KC_C,    KC_D,    KC_V,       KC_K,    KC_H,         KC_COMM,  KC_DOT, DE_MINS, KC_DEL},
+  {XXXXX,   XXXXX, KC_LGUI, KC_LALT, KC_LSFT, MO(_SYM),   KC_ENT,  KC_SPC,       MO(_NAV), _____,  XXXXX,   XXXXX}
 },
 [_NAV] = { 
   {DF(_COLEMAK), XXXXX,    XXXXX,   XXXXX,    _____,  XXXXX,      XXXXX,   _____,   XXXXX,   XXXXX,    XXXXX, _____},
@@ -80,13 +65,44 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   {XXXXX,        XXXXX,    _____,   KC_LALT,  _____,  _____,      KC_ENT,  _____,   _____,   _____,    XXXXX, XXXXX}
 },
 [_SYM] = { 
-  {DE_PERC, XXXXX,   XXXXX,   XXXXX,   DE_PIPE, XXXXX,     XXXXX,   DE_BSLS, XXXXX,  XXXXX, XXXXX,    DE_ACUT},
-  {DE_AMPR, DE_AT,   DE_DQUO, DE_EURO, DE_LCBR, DE_RCBR,   DE_TILD, KC_7,    KC_8,   KC_9,  DE_MINS,  DE_QUOT},
+  {DE_PERC, XXXXX,   XXXXX,   XXXXX,   DE_PIPE, XXXXX,     XXXXX,   _____, XXXXX,  XXXXX, XXXXX,    DE_ACUT},
+  {DE_AMPR, DE_AT,   DE_DQUO, DE_EURO, DE_LCBR, DE_RCBR,   DE_TILD, KC_7,    KC_8,   KC_9,  KC_DOT,   DE_QUOT},
   {DE_SECT, DE_EXLM, DE_SS,   DE_HASH, DE_LPRN, DE_RPRN,   DE_ASTR, KC_4,    KC_5,   KC_6,  DE_PLUS,  _____},
-  {DE_DLR,  DE_QUES, DE_LABK, DE_RABK, DE_LBRC, DE_RBRC,   KC_DOT,  KC_1,    KC_2,   KC_3,  DE_EQL,   DE_GRV},
-  {XXXXX,   XXXXX,   DE_CIRC, _____,   _____,   _____,     KC_ENT,  _____,   _____,  KC_0,  XXXXX,    XXXXX}
+  {DE_DLR,  DE_QUES, DE_LABK, DE_RABK, DE_LBRC, DE_RBRC,   DE_BSLS, KC_1,    KC_2,   KC_3,  DE_EQL,   DE_GRV},
+  {XXXXX,   XXXXX,   DE_CIRC, _____,   _____,   _____,     KC_ENT,  KC_0,    _____,  _____, XXXXX,    XXXXX}
 }
 };
+
+
+
+
+/*
+MacLayer
+* Problem: Layers werden anhand ihrer Indizes von oben nach unten verwendet. Wenn die Sym Layer ein KC_TRNS hat, würde sie erst auf der Mac Layer landen und danach auf Colemak. 
+* Wenn man es sauber will, müsste man also die SymLayers für Mac duplizieren. Und sie wie einen serialisierten Baum anordnen: base, sym-base, nav-base, mac, sym-mac, nav-mac. Das war mir zu viel Aufwandnur für ein @, ich merke mir lieber Alt+L.
+
+
+[_MAC] = { 
+  {_____,   XXXXX,  XXXXX, XXXXX,   _____, XXXXX,      XXXXX,  _____, XXXXX,   XXXXX,  XXXXX,   _____},
+  {_____,   _____,  _____, _____,   _____, _____,      _____,  _____, _____,   _____,  _____,   _____},
+  {KC_LCMD, _____,  _____, _____,   _____, _____,      _____,  _____, _____,   _____,  _____,   _____},
+  {KC_LCTL, _____,  _____, _____,   _____, _____,      _____,  _____, _____,   _____,  _____,   _____},
+  {XXXXX,   XXXXX,  _____, KC_LOPT, _____, _____,      _____,  _____, _____,   _____,  XXXXX,   XXXXX}
+},
+
+
+Old - selbes Problem:
+
+[_OLD] = { 
+  {KC_ESC,  XXXXX, XXXXX,   XXXXX,   KC_F5,   XXXXX,      XXXXX,   KC_KP_SLASH,  XXXXX,   XXXXX,  XXXXX,   DE_ODIA},
+  {KC_TAB,  KC_Q,  KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,         KC_U,    DE_Z,   DE_UDIA, DE_ADIA},
+  {KC_LSFT, KC_A,  KC_R,    KC_S,    KC_T,    KC_G,       KC_M,    KC_N,         KC_E,    KC_I,   KC_O,    KC_BSPC},
+  {KC_LCTL, DE_Y,  KC_X,    KC_C,    KC_D,    KC_V,       KC_K,    KC_H,         KC_COMM, KC_DOT, DE_MINS, KC_RSFT},
+  {XXXXX,   XXXXX, KC_LGUI, KC_LALT, KC_SPC,  MO(_SYM),   KC_ENT,  MO(_NAV),     XXXXX,   _____,  XXXXX,   XXXXX}
+},
+
+
+*/
 
 
 /*
@@ -113,21 +129,21 @@ Keyboard Layout Editor: http://www.keyboard-layout-editor.com/#/
 
 ,
 
-[{c:"#F0F0A0", y:1},"",           {x:3}, ""        , {x:2.5}, ""                    , {x:3}, ""],
-["", "", "F7", "F8", "F9", "F10", {x:0.5},"Pg↑", "Home", "↑", "End", "", "Vol+"],
-["", "", "F4", "F5",{n:true}, "F6", "F11", {x:0.5}, "Pg↓",{n:true}, "←", "↓", "→", "", "Vol-"],
-["", "", "F1", "F2", "F3", "F12", {x:0.5}, "", "Ins", "", "Del", "", ""],
+[{c:"#F0F0A0", y:1},"Base Layer",           {x:3}, ""        , {x:2.5}, ""                    , {x:3}, ""],
+["Alt Layer", "°", "F7", "F8", "F9", "F10", {x:0.5},"Pg↑", "Home", "↑", "End", "", "Vol+"],
+["", "Old Layer", "F4", "F5",{n:true}, "F6", "F11", {x:0.5}, "Pg↓",{n:true}, "←", "↓", "→", "", "Vol-"],
+["", "Mac Layer", "F1", "F2", "F3", "F12", {x:0.5}, "", "Ins", "", "Del", "", ""],
 [{x:3}, "", {x:4.5}, ""],
 [{x:3}, "", "", "", {x:0.5}, "", "", ""]
 
 ,
 
-[{c:"#90B0F0", y:1},"%", {x:3}, "|", {x:2.5}, "°", {x:3}, "´"],
-["&", "@", "\"", "€", "{", "}", {x:0.5},"~", "7", "8", "9", "-", "'"],
+[{c:"#90B0F0", y:1},"%", {x:3}, "|", {x:2.5}, "", {x:3}, "´"],
+["&", "@", "\"", "€", "{", "}", {x:0.5},"~", "7", "8", "9", ".", "'"],
 ["§", "!", "ß", "#", {n:true},"(", ")", {x:0.5}, "*", {n:true},"4", "5", "6", "+", "←"],
 ["$", "?", "<", ">", "[", "]", {x:0.5}, "\\", "1", "2", "3", "=", "`"],
-[{x:3}, "^", {x:4.5}, "."],
-[{x:3}, "", "", "", {x:0.5}, "", "", "0"]
+[{x:3}, "^", {x:4.5}, ""],
+[{x:3}, "", "", "", {x:0.5}, "", "0", ""]
 
 
 
