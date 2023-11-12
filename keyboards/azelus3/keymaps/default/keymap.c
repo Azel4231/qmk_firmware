@@ -3,11 +3,13 @@
 
 #include QMK_KEYBOARD_H
 #include "keymap_german.h"
-
-#define _SYM 3
-#define _NAV 2
-#define _ALTLAY 1
-#define _COLEMAK_DH 0
+ 
+#define _SYM 5
+#define _NAV 4
+#define _OLD 3
+#define _ALT_LAY 2
+#define _MAC 1
+#define _COLEMAK 0
 
 #define _____ KC_TRNS
 #define XXXXX KC_NO
@@ -42,26 +44,40 @@ Flash the arduino micro:
 
 */
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-[_COLEMAK_DH] = { 
-  {KC_ESC,  XXXXX, XXXXX,   XXXXX,   KC_F5,   XXXXX,      XXXXX,   KC_KP_SLASH,  XXXXX,   XXXXX,       XXXXX,   DE_ODIA},
-  {KC_TAB,  KC_Q,  KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,         KC_U,    DE_Z,        DE_UDIA, DE_ADIA},
-  {KC_LSFT, KC_A,  KC_R,    KC_S,    KC_T,    KC_G,       KC_M,    KC_N,         KC_E,    KC_I,        KC_O,    KC_BSPC},
-  {KC_LCTL, DE_Y,  KC_X,    KC_C,    KC_D,    KC_V,       KC_K,    KC_H,         KC_COMM, KC_DOT,      DE_MINS, KC_RSFT},
-  {XXXXX,   XXXXX, KC_LGUI, KC_LALT, KC_SPC,  MO(_SYM),   KC_ENT,  MO(_NAV),     XXXXX,   TG(_ALTLAY), XXXXX,   XXXXX}
+[_COLEMAK] = { 
+  {KC_ESC,  XXXXX, XXXXX,   XXXXX,   KC_F5,   XXXXX,      XXXXX,   KC_KP_SLASH,  XXXXX,   XXXXX,  XXXXX,   DE_ODIA},
+  {KC_TAB,  KC_Q,  KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,         KC_U,    DE_Z,   DE_UDIA, DE_ADIA},
+  {KC_LCTL, KC_A,  KC_R,    KC_S,    KC_T,    KC_G,       KC_M,    KC_N,         KC_E,    KC_I,   KC_O,    KC_BSPC},
+  {XXXXX,   DE_Y,  KC_X,    KC_C,    KC_D,    KC_V,       KC_K,    KC_H,         KC_COMM, KC_DOT, DE_MINS, KC_DEL},
+  {XXXXX,   XXXXX, KC_LGUI, KC_LALT, KC_LSFT, MO(_SYM),   KC_ENT,  MO(_NAV),     KC_SPC,  _____,  XXXXX,   XXXXX}
 },
-[_ALTLAY] = { 
-  {KC_ESC,  XXXXX, XXXXX,   XXXXX,   KC_F5,   XXXXX,      XXXXX,   KC_KP_SLASH,  XXXXX,   XXXXX,       XXXXX,   DE_ODIA},
-  {KC_TAB,  KC_Q,  KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,         KC_U,    DE_Z,        DE_UDIA, DE_ADIA},
-  {KC_LCTL, KC_A,  KC_R,    KC_S,    KC_T,    KC_G,       KC_M,    KC_N,         KC_E,    KC_I,        KC_O,    KC_BSPC},
-  {XXXXX,   DE_Y,  KC_X,    KC_C,    KC_D,    KC_V,       KC_K,    KC_H,         KC_COMM, KC_DOT,      DE_MINS, KC_DEL},
-  {XXXXX,   XXXXX, KC_LGUI, KC_LALT, KC_LSFT, MO(_SYM),   KC_ENT,  MO(_NAV),     KC_SPC,  TG(_ALTLAY), XXXXX,   XXXXX}
+[_MAC] = { 
+  {_____,   XXXXX,      XXXXX, XXXXX,   _____, XXXXX,      XXXXX,  _____, XXXXX,   XXXXX,  XXXXX,   _____},
+  {_____,   RALT(KC_L), _____, _____,   _____, _____,      _____,  _____, _____,   _____,  _____,   _____},
+  {KC_LCMD, _____,      _____, _____,   _____, _____,      _____,  _____, _____,   _____,  _____,   _____},
+  {KC_LCTL, _____,      _____, _____,   _____, _____,      _____,  _____, _____,   _____,  _____,   _____},
+  {XXXXX,   XXXXX,      _____, KC_LOPT, _____, _____,      _____,  _____, _____,   _____,  XXXXX,   XXXXX}
+},
+[_ALT_LAY] = { 
+  {KC_ESC,  XXXXX, XXXXX,   XXXXX,   KC_F5,   XXXXX,      XXXXX,   KC_KP_SLASH,  XXXXX,   XXXXX,  XXXXX,   DE_ODIA},
+  {KC_TAB,  KC_Q,  KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,         KC_U,    DE_Z,   DE_UDIA, DE_ADIA},
+  {KC_LCTL, KC_A,  KC_R,    KC_S,    KC_T,    KC_G,       KC_M,    KC_N,         KC_E,    KC_I,   KC_O,    KC_BSPC},
+  {XXXXX,   DE_Y,  KC_X,    KC_C,    KC_D,    KC_V,       KC_K,    KC_H,         KC_COMM, KC_DOT, DE_MINS, KC_DEL},
+  {XXXXX,   XXXXX, KC_LGUI, KC_LALT, KC_LSFT, MO(_SYM),   KC_ENT,  MO(_NAV),     KC_SPC,  _____,  XXXXX,   XXXXX}
+},
+[_OLD] = { 
+  {KC_ESC,  XXXXX, XXXXX,   XXXXX,   KC_F5,   XXXXX,      XXXXX,   KC_KP_SLASH,  XXXXX,   XXXXX,  XXXXX,   DE_ODIA},
+  {KC_TAB,  KC_Q,  KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,         KC_U,    DE_Z,   DE_UDIA, DE_ADIA},
+  {KC_LSFT, KC_A,  KC_R,    KC_S,    KC_T,    KC_G,       KC_M,    KC_N,         KC_E,    KC_I,   KC_O,    KC_BSPC},
+  {KC_LCTL, DE_Y,  KC_X,    KC_C,    KC_D,    KC_V,       KC_K,    KC_H,         KC_COMM, KC_DOT, DE_MINS, KC_RSFT},
+  {XXXXX,   XXXXX, KC_LGUI, KC_LALT, KC_SPC,  MO(_SYM),   KC_ENT,  MO(_NAV),     XXXXX,   _____,  XXXXX,   XXXXX}
 },
 [_NAV] = { 
-  {_____,   XXXXX,  XXXXX,   XXXXX,    _____,  XXXXX,      XXXXX,   _____,   XXXXX,   XXXXX,    XXXXX, _____},
-  {_____,   DE_DEG, KC_F7,   KC_F8,    KC_F9,  KC_F10,     KC_PGUP, KC_HOME, KC_UP,   KC_END,   _____, KC_AUDIO_VOL_UP},
-  {_____,   _____,  KC_F4,   KC_F5,    KC_F6,  KC_F11,     KC_PGDN, KC_LEFT, KC_DOWN, KC_RIGHT, _____, KC_AUDIO_VOL_DOWN},
-  {_____,   _____,  KC_F1,   KC_F2,    KC_F3,  KC_F12,     _____,   KC_INS,  XXXXX,   KC_DEL,   _____, _____},
-  {XXXXX,   XXXXX,  _____,   KC_LALT,  _____,  _____,      KC_ENT,  _____,   _____,   _____,    XXXXX, XXXXX}
+  {DF(_COLEMAK), XXXXX,    XXXXX,   XXXXX,    _____,  XXXXX,      XXXXX,   _____,   XXXXX,   XXXXX,    XXXXX, _____},
+  {DF(_ALT_LAY), DE_DEG,   KC_F7,   KC_F8,    KC_F9,  KC_F10,     KC_PGUP, KC_HOME, KC_UP,   KC_END,   _____, KC_AUDIO_VOL_UP},
+  {_____,        DF(_OLD), KC_F4,   KC_F5,    KC_F6,  KC_F11,     KC_PGDN, KC_LEFT, KC_DOWN, KC_RIGHT, _____, KC_AUDIO_VOL_DOWN},
+  {_____,        DF(_MAC), KC_F1,   KC_F2,    KC_F3,  KC_F12,     _____,   KC_INS,  XXXXX,   KC_DEL,   _____, _____},
+  {XXXXX,        XXXXX,    _____,   KC_LALT,  _____,  _____,      KC_ENT,  _____,   _____,   _____,    XXXXX, XXXXX}
 },
 [_SYM] = { 
   {DE_PERC, XXXXX,   XXXXX,   XXXXX,   DE_PIPE, XXXXX,     XXXXX,   DE_BSLS, XXXXX,  XXXXX, XXXXX,    DE_ACUT},
@@ -71,3 +87,104 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   {XXXXX,   XXXXX,   DE_CIRC, _____,   _____,   _____,     KC_ENT,  _____,   _____,  KC_0,  XXXXX,    XXXXX}
 }
 };
+
+
+/*
+Keyboard Layout Editor: http://www.keyboard-layout-editor.com/#/
+
+
+
+
+["Esc", {x:3}, "F5", {x:2.5}, "/", {x:3}, "Ö"],
+["Tab", "Q", "W", "F", "P", "B", {x:0.5},"J", "L", "U", "Z", "Ü", "Ä"],
+["Shift", "A", "R", "S",{n:true}, "T", "G", {x:0.5}, "M", {n:true},"N", "E", "I", "O", "←"],
+["Ctrl", "Y", "X", "C", "D", "V", {x:0.5}, "K", "H", ",", ".", "-", "Shift"],
+[{x:3}, "Meta", {x:4.5}, ""],
+[{x:3}, "Alt", "Blank", {c:"#90B0F0"}, "Sym", {c:"#D0D0D0",x:0.5}, "Enter", {c:"#F0F0A0"}, "Nav", {c:"#D0D0D0"},  "Del"],
+
+,
+
+[{y:1}, "Esc", {x:3}, "F5", {x:2.5}, "/", {x:3}, "Ö"],
+["Tab", "Q", "W", "F", "P", "B", {x:0.5},"J", "L", "U", "Z", "Ü", "Ä"],
+["Ctrl", "A", "R", "S",{n:true}, "T", "G", {x:0.5}, "M", {n:true},"N", "E", "I", "O", "←"],
+["", "Y", "X", "C", "D", "V", {x:0.5}, "K", "H", ",", ".", "-", ""],
+[{x:3}, "Meta", {x:4.5}, "Toggle Alt Layout"],
+[{x:3}, "Alt", "Shift", {c:"#90B0F0"}, "Sym", {c:"#D0D0D0",x:0.5}, "Enter", {c:"#F0F0A0"}, "Nav", {c:"#D0D0D0"},  "Blank"]
+
+,
+
+[{c:"#F0F0A0", y:1},"",           {x:3}, ""        , {x:2.5}, ""                    , {x:3}, ""],
+["", "", "F7", "F8", "F9", "F10", {x:0.5},"Pg↑", "Home", "↑", "End", "", "Vol+"],
+["", "", "F4", "F5",{n:true}, "F6", "F11", {x:0.5}, "Pg↓",{n:true}, "←", "↓", "→", "", "Vol-"],
+["", "", "F1", "F2", "F3", "F12", {x:0.5}, "", "Ins", "", "Del", "", ""],
+[{x:3}, "", {x:4.5}, ""],
+[{x:3}, "", "", "", {x:0.5}, "", "", ""]
+
+,
+
+[{c:"#90B0F0", y:1},"%", {x:3}, "|", {x:2.5}, "°", {x:3}, "´"],
+["&", "@", "\"", "€", "{", "}", {x:0.5},"~", "7", "8", "9", "-", "'"],
+["§", "!", "ß", "#", {n:true},"(", ")", {x:0.5}, "*", {n:true},"4", "5", "6", "+", "←"],
+["$", "?", "<", ">", "[", "]", {x:0.5}, "\\", "1", "2", "3", "=", "`"],
+[{x:3}, "^", {x:4.5}, "."],
+[{x:3}, "", "", "", {x:0.5}, "", "", "0"]
+
+
+
+
+*/
+
+
+/*
+Ergogen: https://ergogen.cache.works/
+
+
+
+points:
+  zones:
+    matrix:
+      anchor:
+        rotate: 0
+      columns:
+        pinky2:
+          rows.extra.skip: true 
+        pinky:
+          key.stagger: 1 
+        ring:
+          key.stagger: 12 
+        middle:
+          key.stagger: 5
+        index:
+          key.stagger: -8 
+        inner:
+          key.stagger: -4
+          rows.extra.skip: true 
+      rows: 
+        bottom: 
+        home:
+        top:
+        extra:
+    meta:
+      anchor:
+        ref: matrix_middle_bottom
+        shift: [0,-1.4u]
+      columns:
+        meta_col:
+      rows:
+        meta_row:
+    thumbfan:
+      anchor:
+        ref: matrix_inner_bottom
+        shift: [-0.6u, -1.4u]
+      columns:
+        near:
+        home:
+        far:
+      rows:
+        thumb: 
+  rotate: -20
+  mirror:
+    ref: matrix_pinky_home
+    distance: 195
+
+*/
