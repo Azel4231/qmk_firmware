@@ -44,10 +44,10 @@ Flash the arduino micro:
 */
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_COLEMAK] = { 
-  {KC_DEL,  XXXXX, XXXXX,   XXXXX,   KC_F5,   XXXXX,      XXXXX,   KC_KP_SLASH,  XXXXX,    XXXXX,  XXXXX,   DE_ODIA},
-  {KC_ESC,  KC_Q,  KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,         KC_U,     DE_Z,   DE_UDIA, DE_ADIA},
+  {KC_ESC,  XXXXX, XXXXX,   XXXXX,   KC_F5,   XXXXX,      XXXXX,   KC_KP_SLASH,  XXXXX,    XXXXX,  XXXXX,   DE_ODIA},
+  {KC_TAB,  KC_Q,  KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,         KC_U,     DE_Z,   DE_UDIA, DE_ADIA},
   {KC_LCTL, KC_A,  KC_R,    KC_S,    KC_T,    KC_G,       KC_M,    KC_N,         KC_E,     KC_I,   KC_O,    KC_BSPC},
-  {KC_TAB,  DE_Y,  KC_X,    KC_C,    KC_D,    KC_V,       KC_K,    KC_H,         KC_COMM,  KC_DOT, DE_MINS, DE_SS},
+  {XXXXX,   DE_Y,  KC_X,    KC_C,    KC_D,    KC_V,       KC_K,    KC_H,         KC_COMM,  KC_DOT, DE_MINS, DE_SS},
   {XXXXX,   XXXXX, KC_LGUI, KC_LALT, KC_LSFT, MO(_SYM),   KC_ENT,  MO(_NAV),     KC_SPC,   _____,  XXXXX,   XXXXX}
 },
 [_ALT_LAY] =  { 
@@ -69,13 +69,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   {DE_AMPR, DE_AT,   DE_DQUO, DE_DLR,  DE_LCBR, DE_RCBR,   DE_TILD, KC_7,    KC_8,   KC_9,  DE_CIRC,  DE_QUOT},
   {DE_EURO, DE_EXLM, DE_EQL,  DE_HASH, DE_LPRN, DE_RPRN,   DE_ASTR, KC_4,    KC_5,   KC_6,  DE_PLUS,  _____},
   {DE_SECT, DE_QUES, DE_LABK, DE_RABK, DE_LBRC, DE_RBRC,   DE_BSLS, KC_1,    KC_2,   KC_3,  KC_DOT,   DE_GRV},
-  {XXXXX,   XXXXX,   _____, _____,   _____,   _____,     KC_ENT,  KC_0,    _____,  _____, XXXXX,    XXXXX}
+  {XXXXX,   XXXXX,   _____,   _____,   _____,   _____,     KC_ENT,  KC_0,    _____,  _____, XXXXX,    XXXXX}
 }
 };
 
 /*
 Notizen für zukünftige Änderungen:
-  * 
+  * Sym Layer:
+    - # verschieben, trotz Clojure? # -> €, € -> §, § -> ^ 
+    - \+~ verschieben
+    - ;+: auf sym layer verschieben, weil Java. Dafür ,. mit <> belegen (so hat es Dominic)
 */
 
 
@@ -162,7 +165,8 @@ Keyboard Layout Editor: http://www.keyboard-layout-editor.com/#/
 /*
 Ergogen: https://ergogen.cache.works/
 
-
+- 20° ist ein wenig zu viel. Versuch mit 18°
+- ggf. Meta ganz weglassen. Sind auch ohne 50 statt 48 Tasten
 
 points:
   zones:
@@ -206,7 +210,7 @@ points:
         far:
       rows:
         thumb: 
-  rotate: -20
+  rotate: -18
   mirror:
     ref: matrix_pinky_home
     distance: 195
