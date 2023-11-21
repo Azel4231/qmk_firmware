@@ -58,11 +58,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   {XXXXX,   XXXXX, KC_LGUI, KC_LALT, KC_LSFT, MO(_SYM),   KC_ENT,  MO(_NAV),     KC_SPC,  _____,  XXXXX,   XXXXX}
 },
 [_NAV] = { 
-  {DF(_COLEMAK), XXXXX,   XXXXX,   XXXXX,    _____,  XXXXX,      XXXXX,   _____,   XXXXX,   XXXXX,    XXXXX, _____},
-  {DF(_ALT_LAY), DE_DEG,  KC_F7,   KC_F8,    KC_F9,  KC_F10,     KC_PGUP, KC_HOME, KC_UP,   KC_END,   _____, KC_AUDIO_VOL_UP},
-  {_____,        _____,   KC_F4,   KC_F5,    KC_F6,  KC_F11,     KC_PGDN, KC_LEFT, KC_DOWN, KC_RIGHT, _____, KC_AUDIO_VOL_DOWN},
-  {_____,        _____,   KC_F1,   KC_F2,    KC_F3,  KC_F12,     _____,   KC_INS,  XXXXX,   KC_DEL,   _____, _____},
-  {XXXXX,        XXXXX,   _____,   KC_LALT,  _____,  _____,      KC_ENT,  _____,   _____,   _____,    XXXXX, XXXXX}
+  {DF(_COLEMAK), XXXXX,   XXXXX,         XXXXX,    _____,  XXXXX,      XXXXX,   _____,   XXXXX,   XXXXX,    XXXXX, _____},
+  {DF(_ALT_LAY), DE_DEG,  KC_F7,         KC_F8,    KC_F9,  KC_F10,     KC_PGUP, KC_HOME, KC_UP,   KC_END,   _____, KC_AUDIO_VOL_UP},
+  {_____,        _____,   KC_F4,         KC_F5,    KC_F6,  KC_F11,     KC_PGDN, KC_LEFT, KC_DOWN, KC_RIGHT, _____, KC_AUDIO_VOL_DOWN},
+  {_____,        _____,   KC_F1,         KC_F2,    KC_F3,  KC_F12,     _____,   KC_INS,  XXXXX,   KC_DEL,   _____, _____},
+  {XXXXX,        XXXXX,   QK_BOOTLOADER, KC_LALT,  _____,  _____,      KC_ENT,  _____,   _____,   _____,    XXXXX, XXXXX}
 },
 [_SYM] = { 
   {DE_PERC, XXXXX,   XXXXX,   XXXXX,   DE_PIPE, XXXXX,     XXXXX,   _____,   XXXXX,  XXXXX, XXXXX,    DE_ACUT},
@@ -165,8 +165,9 @@ Keyboard Layout Editor: http://www.keyboard-layout-editor.com/#/
 /*
 Ergogen: https://ergogen.cache.works/
 
-- 20° ist ein wenig zu viel. Versuch mit 18°
+- 20° ist ein wenig zu viel. Versuch mit 15-18° (12° ursprünglich)
 - ggf. Meta ganz weglassen. Sind auch ohne 50 statt 48 Tasten
+- ggf. doch noch 4. Daumentaste. Aber dann nach oben versetzt -> TODO
 
 points:
   zones:
