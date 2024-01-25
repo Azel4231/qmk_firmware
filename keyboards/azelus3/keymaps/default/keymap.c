@@ -80,6 +80,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   }
 };
 
+const uint16_t PROGMEM SpitzeKlammer[] = {DE_LABK, DE_SCLN, COMBO_END};
+combo_t key_combos[] = {
+    COMBO(SpitzeKlammer, DE_RABK)
+    // COMBO(test_combo2, LCTL(KC_Z)), // keycodes with modifiers are possible too!
+};
+
 /*
 Notizen für zukünftige Änderungen:
   * Sym Layer:
