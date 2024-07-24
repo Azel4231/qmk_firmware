@@ -4,11 +4,10 @@
 #include QMK_KEYBOARD_H
 #include "keymap_german.h"
 
-#define _SYM 5
-#define _NAV 4
-#define _RIGHT 3
-#define _ALT_LAY 2
-#define _MAC 1
+#define _SYM 4
+#define _NAV 3
+#define _RIGHT 2
+#define _STENO 1
 #define _COLEMAK 0
 
 #define _____ KC_TRNS
@@ -48,18 +47,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   {KC_TAB,     KC_Q,  KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,         KC_U,     DE_Z,   DE_UDIA, DE_ADIA},
   {KC_LCTL,    KC_A,  KC_R,    KC_S,    KC_T,    KC_G,       KC_M,    KC_N,         KC_E,     KC_I,   KC_O,    KC_BSPC},
   {MO(_RIGHT), DE_Y,  KC_X,    KC_C,    KC_D,    KC_V,       KC_K,    KC_H,         KC_COMM,  KC_DOT, DE_MINS, DE_SS},
-  {XXXXX,      XXXXX, KC_LGUI, KC_LALT, KC_LSFT, MO(_SYM),   KC_ENT,  MO(_NAV),     KC_SPC,   _____,  XXXXX,   XXXXX}
+  {XXXXX,      XXXXX, KC_LGUI, KC_LALT, KC_LSFT, MO(_SYM),   KC_ENT,  MO(_NAV),     KC_SPC,   XXXXX /*tF(_STENO)*/,  XXXXX,   XXXXX}
 },
-[_ALT_LAY] =  {
-  {KC_ESC,     XXXXX, XXXXX,   XXXXX,   KC_F5,   XXXXX,      XXXXX,   KC_KP_SLASH,  XXXXX,   XXXXX,  XXXXX,   DE_ODIA},
-  {KC_TAB,     KC_Q,  KC_W,    KC_F,    KC_P,    KC_B,       KC_J,    KC_L,         KC_U,    DE_Z,   DE_UDIA, DE_ADIA},
-  {KC_LSFT,    KC_A,  KC_R,    KC_S,    KC_T,    KC_G,       KC_M,    KC_N,         KC_E,    KC_I,   KC_O,    KC_BSPC},
-  {KC_LCTL,    DE_Y,  KC_X,    KC_C,    KC_D,    KC_V,       KC_K,    KC_H,         KC_COMM, KC_DOT, DE_MINS, DE_SS},
-  {XXXXX,      XXXXX, KC_LGUI, KC_LALT, KC_LSFT, MO(_SYM),   KC_ENT,  MO(_NAV),     KC_SPC,  _____,  XXXXX,   XXXXX}
+[_STENO] =  {
+  {DF(_COLEMAK), XXXXX, XXXXX,   XXXXX,   XXXXX,   XXXXX,      XXXXX,   XXXXX,  XXXXX,   XXXXX,  XXXXX,   XXXXX},
+  {XXXXX,        KC_1,  KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,   KC_8,    KC_9,   KC_0,          KC_0},
+  {XXXXX,        KC_Q,  KC_W,    KC_E,    KC_R,    KC_T,       DE_Z,    KC_U,   KC_I,    KC_O,   KC_P,    DE_UDIA},
+  {XXXXX,        KC_A,  KC_S,    KC_D,    KC_F,    KC_G,       KC_H,    KC_J,   KC_K,    KC_L,   DE_ODIA, DE_ADIA},
+  {XXXXX,        XXXXX, XXXXX,   XXXXX,   KC_C,    KC_V,       KC_N,    KC_M,   XXXXX,   XXXXX,  XXXXX,   XXXXX}
 },
 [_NAV] = {
   {DF(_COLEMAK), XXXXX,   XXXXX,         XXXXX,    _____,  XXXXX,      XXXXX,   _____,   XXXXX,   XXXXX,    XXXXX, _____},
-  {DF(_ALT_LAY), DE_DEG,  KC_F7,         KC_F8,    KC_F9,  KC_F10,     KC_PGUP, KC_HOME, KC_UP,   KC_END,   _____, KC_AUDIO_VOL_UP},
+  {DF(_STENO), DE_DEG,  KC_F7,         KC_F8,    KC_F9,  KC_F10,     KC_PGUP, KC_HOME, KC_UP,   KC_END,   _____, KC_AUDIO_VOL_UP},
   {_____,        _____,   KC_F4,         KC_F5,    KC_F6,  KC_F11,     KC_PGDN, KC_LEFT, KC_DOWN, KC_RIGHT, _____, KC_AUDIO_VOL_DOWN},
   {_____,        _____,   KC_F1,         KC_F2,    KC_F3,  KC_F12,     _____,   KC_INS,  XXXXX,   KC_DEL,   _____, _____},
   {XXXXX,        XXXXX,   QK_BOOTLOADER, KC_LALT,  _____,  _____,      KC_ENT,  _____,   _____,   _____,    XXXXX, XXXXX}
@@ -68,7 +67,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    {DE_PERC, XXXXX,   XXXXX,   XXXXX,    DE_PIPE, XXXXX,     XXXXX,   _____,   XXXXX,  XXXXX, XXXXX,    DE_ACUT},
    {DE_AMPR, DE_AT,   DE_DQUO, DE_DLR,   DE_LCBR, DE_RCBR,   DE_TILD, KC_7,    KC_8,   KC_9,  DE_CIRC,  DE_QUOT},
    {DE_HASH, DE_EXLM, DE_EQL,  DE_COLN,  DE_LPRN, DE_RPRN,   DE_ASTR, KC_4,    KC_5,   KC_6,  DE_PLUS,  _____},
-   {DE_EURO, DE_QUES, DE_LABK, DE_SCLN,  DE_LBRC, DE_RBRC,   DE_BSLS, KC_1,    KC_2,   KC_3,  KC_DOT,   DE_GRV},
+   {DE_EURO, DE_QUES, DE_LABK, DE_RABK,  DE_LBRC, DE_RBRC,   DE_BSLS, KC_1,    KC_2,   KC_3,  KC_DOT,   DE_GRV},
    {XXXXX,   XXXXX,   DE_SECT,   _____,  _____,   _____,     _____,   KC_0,    _____,  _____, XXXXX,    XXXXX}
  },
   [_RIGHT] = {
@@ -79,10 +78,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     {XXXXX,      XXXXX,   XXXXX,   KC_SPC,  _____, _____,      _____,   MO(_NAV),     KC_SPC,   _____,  XXXXX,   XXXXX}
   }
 };
-
-const uint16_t PROGMEM SpitzeKlammer[] = {DE_LABK, DE_SCLN, COMBO_END};
+//const uint16_t PROGMEM SpitzeKlammer[] = {DE_LABK, DE_SCLN, COMBO_END};
 combo_t key_combos[] = {
-    COMBO(SpitzeKlammer, DE_RABK)
+    // COMBO(SpitzeKlammer, DE_RABK)
     // COMBO(test_combo2, LCTL(KC_Z)), // keycodes with modifiers are possible too!
 };
 
